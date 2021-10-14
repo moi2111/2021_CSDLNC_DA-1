@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoices - SPA jQuery</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card shadow mt-5">
+                    <h5 class="card-header">
+                        Thống kê hóa đơn theo tháng
+                        <a class="btn btn-primary float-right" href="index.html" role="button">
+                            <i class="fa fa-backward" aria-hidden="true"></i>
+                            Danh sách hóa đơn
+                        </a>
+                    </h5>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                              <tr>
+                                <th class="text-center" scope="col">#</th>
+                                <th scope="col">MaHD</th>
+                                <th scope="col">MaKH</th>
+                                <th scope="col">Ngày lập</th>
+                                <th scope="col">Tổng tiền</th>
+                              </tr>
+                            </thead>
+                            <tbody id="invoices-list">
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-footer text-muted">
+                        Footer
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script id="entry-template" type="text/x-handlebars-template">
+        {{#each this}}
+        <tr>
+            <!-- <th class="text-center" scope="row">{{id}}</th> -->
+            <th class="text-center" scope="row">{{NgayLap}}</th> -->
+            <td>{{MaHD}}</td>
+            <td>{{MaKH}}</td>
+            <td>{{NgayLap}}</td>
+            <td>{{TongTien}} VNĐ</td>
+        </tr>
+        {{/each}}
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.1/handlebars.min.js"></script>
+    <script src="./statistic.app.js"></script>
+</body>
+</html>
