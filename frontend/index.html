@@ -32,9 +32,8 @@
                         <table class="table">
                             <thead>
                               <tr>
-                                <!-- <th class="text-center" scope="col">#</th> -->
-                                <th scope="col">MaHD</th>
-                                <th scope="col">MaKH</th>
+                                <th class="text-center" scope="col">MaHD</th>
+                                <th class="text-center" scope="col">MaKH</th>
                                 <th scope="col">Ngày lập</th>
                                 <th scope="col">Tổng tiền</th>
                                 <th scope="col">&nbsp;</th>
@@ -64,17 +63,17 @@
                 </div>
                 <div class="modal-body">
                     <form>
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label for="txtId" class="col-form-label">#:</label>
                             <input type="text" class="form-control" id="txtId" readonly>
-                        </div>
+                        </div> -->
                         <div class="form-group">
                             <label for="txtMaHD" class="col-form-label">MaHD:</label>
-                            <input type="text" class="form-control" id="txtMaHD">
+                            <input type="text" class="form-control" id="txtMaHD" readonly>
                         </div>
                         <div class="form-group">
                             <label for="txtMaKH" class="col-form-label">MaKH:</label>
-                            <input type="text" class="form-control" id="txtMaKH">
+                            <input type="text" class="form-control" id="txtMaKH" readonly>
                         </div>
                         <div class="form-group">
                             <label for="txtDay" class="col-form-label">Ngày lập:</label>
@@ -82,7 +81,7 @@
                         </div>
                         <div class="form-group">
                             <label for="txtTotal" class="col-form-label">Tổng tiền:</label>
-                            <input type="text" class="form-control" id="txtTotal">
+                            <input type="text" class="form-control" id="txtTotal" readonly>
                         </div>
                     </form>
                 </div>
@@ -104,15 +103,15 @@
         {{#each this}}
         <tr>
             <!-- <th class="text-center" scope="row">{{id}}</th> -->
-            <td>{{MaHD}}</td>
-            <td>{{MaKH}}</td>
+            <td class="text-center" scope="row">{{MaHD}}</td>
+            <td class="text-center" scope="row">{{MaKH}}</td>
             <td>{{NgayLap}}</td>
             <td>{{TongTien}} VNĐ</td>
             <td class="text-right">
-                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#invoiceModal" data-id="{{id}}">
+                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#invoiceModal" data-id="{{MaHD}}">
                     <i class="fa fa-pencil" aria-hidden="true"></i>
                 </button>
-                <a class="btn btn-danger btn-sm delinvoice" href="javascript:;" role="button" data-id="{{id}}">
+                <a class="btn btn-danger btn-sm delinvoice" href="javascript:;" role="button" data-id="{{MaHD}}">
                     <i class="fa fa-trash" aria-hidden="true"></i>
                 </a>
             </td>

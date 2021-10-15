@@ -1,10 +1,11 @@
 $(function () {
-    var url = 'http://localhost:3000/students';
+    var url = 'http://localhost:3000/hoadon';
     $.ajax(url)
         .done(function (data) {
             var source = document.getElementById('entry-template').innerHTML;
             var template = Handlebars.compile(source);
-            var html = template(data);
+            var html = template(data.result);
+            // console.log(data)
             $('#invoices-list').html(html);
         }).fail(function (err) {
             console.log(err);
@@ -15,12 +16,12 @@ $('#invoices-list').on('click', '.delinvoice', function () {
     var button = $(this);
     var id = button.data('id');
     $.ajax({
-        url: 'http://localhost:3000/students/' + id,
+        url: 'http://localhost:3000/hoadon/' + id,
         type: 'DELETE',
         dataType: 'json',
         timeout: 10000,
     }).done(function (data) {
-        // console.log(data);
+        // console.log(data)
         button.closest('tr').remove();
     }).fail(function (xhr, textStatus, error) {
         console.log(textStatus);
@@ -38,30 +39,31 @@ $('#invoiceModal').on('show.bs.modal', function (event) {
     console.log(focusedRow);
 
     var modal = $(this);
-    var url = 'http://localhost:3000/students/' + id;
+    var url = 'http://localhost:3000/hoadon/' + id;
     $.ajax(url)
         .done(function (data) {
-            modal.find('#txtId').val(id);
-            modal.find('#txtMaHD').val(data.MaHD);
-            modal.find('#txtMaKH').val(data.MaKH);
-            modal.find('#txtDay').val(data.NgayLap);
-            modal.find('#txtTotal').val(data.TongTien);
+            // modal.find('#txtId').val(id);
+            // modal.find('#txtMaHD').val(data.MaHD);
+            modal.find('#txtMaHD').val(id);
+            modal.find('#txtMaKH').val(data.result.MaKH);
+            modal.find('#txtDay').val(data.result.NgayLap);
+            modal.find('#txtTotal').val(data.result.TongTien);
         }).fail(function (err) {
             console.log(err);
         })
 })
 
 $('#btnSave').on('click', function () {
-    var id = $('#txtId').val();
+    // var id = $('#txtId').val();
+    var id = $('#txtMaHD').val()
     var objToPatch = {
-        MaHD: $('#txtMaHD').val(),
         MaKH: $('#txtMaKH').val(),
         NgayLap: $('#txtDay').val(),
         TongTien: $('#txtTotal').val(),
     }
 
     $.ajax({
-        url: 'http://localhost:3000/students/' + id,
+        url: 'http://localhost:3000/hoadon/' + id,
         type: 'PATCH',
         contentType: 'application/json',
         data: JSON.stringify(objToPatch),
