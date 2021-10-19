@@ -22,6 +22,10 @@
                                 <i class="fa fa-calendar" aria-hidden="true"></i>
                                 Thống kê hóa đơn theo tháng
                             </a>
+                            <a class="btn btn-outline-dark" href="./add_info.html" role="button">
+                                <i class="fa fa-plus" aria-hidden="true"></i>
+                                Thêm chi tiết hóa đơn
+                            </a>
                             <a class="btn btn-outline-primary" href="add.html" role="button">
                                 <i class="fa fa-plus" aria-hidden="true"></i>
                                 Thêm mới hóa đơn
@@ -32,6 +36,7 @@
                         <table class="table">
                             <thead>
                               <tr>
+                                <th scope="col">&nbsp;</th>
                                 <th class="text-center" scope="col">MaHD</th>
                                 <th class="text-center" scope="col">MaKH</th>
                                 <th scope="col">Ngày lập</th>
@@ -102,6 +107,12 @@
     <script id="entry-template" type="text/x-handlebars-template">
         {{#each this}}
         <tr>
+            <td>
+                <a class="btn btn btn-outline-info btn-sm" href="" role="button">
+                    <!-- <i class="fa fa-plus" aria-hidden="true"></i> -->
+                    Chi tiết
+                </a>
+            </td>
             <!-- <th class="text-center" scope="row">{{id}}</th> -->
             <td class="text-center" scope="row">{{MaHD}}</td>
             <td class="text-center" scope="row">{{MaKH}}</td>

@@ -15,7 +15,7 @@
             <div class="col-sm-12">
                 <div class="card shadow mt-5">
                     <h5 class="card-header">
-                        Thêm mới hóa đơn
+                        Thêm mới chi tiết hóa đơn
                         <a class="btn btn-primary float-right" href="index.html" role="button">
                             <i class="fa fa-backward" aria-hidden="true"></i>
                             Danh sách hóa đơn
@@ -27,21 +27,29 @@
                             <label for="txtId">ID</label>
                             <input id="txtId" type="text" class="form-control" placeholder="Id">
                         </div> -->
-                        <!-- <div class="form-group">
+                        <div class="form-group">
                             <label for="txtMaHD">MaHD</label>
-                            <input id="txtMaHD" type="text" class="form-control" required placeholder="VD: HD01">
-                        </div> -->
-                        <div class="form-group">
-                            <label for="txtMaKH">MaKH</label>
-                            <input id="txtMaKH" type="text" class="form-control" required placeholder="VD: 1">
+                            <input id="txtMaHD" type="text" class="form-control" required placeholder="VD: 1">
                         </div>
                         <div class="form-group">
-                            <label for="txtDay">Ngày Lập</label>
-                            <input id="txtDay" type="text" class="form-control" required placeholder="mm-dd-yyyy">
+                            <label for="txtMaSP">MaSP</label>
+                            <input id="txtMaSP" type="text" class="form-control" required placeholder="VD: 1">
                         </div>
                         <div class="form-group">
-                            <label for="txtTotal">Tổng tiền</label>
-                            <input id="txtTotal" type="text" class="form-control" required placeholder="0 VNĐ" readonly>
+                            <label for="txtSoLuong">Số lượng</label>
+                            <input id="txtSoLuong" type="text" class="form-control" required placeholder="VD: 1">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtGiaBan">Giá bán</label>
+                            <input id="txtGiaBan" type="text" class="form-control" required placeholder="VD: 1">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtGiaGiam">Giá giảm</label>
+                            <input id="txtGiaGiam" type="text" class="form-control" required placeholder="VD: 1">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtThanhTien">Thành tiền</label>
+                            <input id="txtThanhTien" type="text" class="form-control" required placeholder="0 VNĐ">
                         </div>
                     </div>
                     
@@ -62,7 +70,7 @@
     </div>
     
     <!-- Modal -->
-    <div class="modal fade" id="invoiceAddModal" tabindex="-1" role="dialog" aria-labelledby="invoiceAddModalLabel" aria-hidden="true">
+   <div class="modal fade" id="invoiceAddModal" tabindex="-1" role="dialog" aria-labelledby="invoiceAddModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -92,11 +100,11 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> 
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <script src="add.app.js"></script>
+    <script src="add_info.app.js"></script>
 </body>
 </html>

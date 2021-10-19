@@ -1,14 +1,16 @@
 $('#btnSave').on('click', function () {
     var objToPost = {
         // id: $('#txtId').val(),
-        // MaHD: $('#txtMaHD').val(),
-        MaKH: $('#txtMaKH').val(),
-        NgayLap: $('#txtDay').val(),
-        // TongTien: $('#txtTotal').val(),
+        MaHD: $('#txtMaHD').val(),
+        MaSP: $('#txtMaSP').val(),
+        SoLuong: $('#txtSoLuong').val(),
+        GiaBan: $('#txtGiaBan').val(),
+        GiaGiam: $('#txtGiaGiam').val(),
+        ThanhTien: $('#txtThanhTien').val(),
     }
 
     $.ajax({
-        url: 'http://localhost:3000/hoadon',
+        url: 'http://localhost:3000/ct_hoadon',
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify(objToPost),

@@ -18,7 +18,8 @@ app.get('/', (req, res) => {
 })
 
 require('./app/routes/hoadon.route.js')(app)
-// app.use('/hoadon', require('./app/routes/hoadon.route.js'))
+require('./app/routes/ct_hoadon.route.js')(app)
+
 
 // mở cổng server
 var port = process.env.PORT || 3000 
