@@ -10,16 +10,17 @@ $(function() {
             var template = Handlebars.compile(source);
             var html = template(range);
             $('#pagination-container').html(html);
+
+            $('.page-item').first().addClass('active')
+            var page = 1; //
+            var url = 'http://localhost:3000/hoadon/page/' + page;
+            renderPage(url);
+            
         }).fail(function (err) {
             console.log(err);
         })
 })
 
-$(function () {
-    var page = 1; //
-    var url = 'http://localhost:3000/hoadon/page/' + page;
-    renderPage(url);
-})
 
 function renderPage(url) {
     $.ajax(url)
