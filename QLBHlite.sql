@@ -64,12 +64,8 @@ ADD
 
 ALTER TABLE CT_HoaDon
 ADD
-	CONSTRAINT FK_CT_HoaDon_HoaDon
-	FOREIGN KEY(MaHD)
-	REFERENCES HoaDon(MaHD),
-	CONSTRAINT FK_CT_HoaDon_SanPham
-	FOREIGN KEY(MaSP)
-	REFERENCES SanPham(MaSP)
+	CONSTRAINT FK_CT_HoaDon_HoaDon FOREIGN KEY(MaHD) REFERENCES HoaDon(MaHD),
+	CONSTRAINT FK_CT_HoaDon_SanPham FOREIGN KEY(MaSP) REFERENCES SanPham(MaSP)
 
 ALTER TABLE KhachHang
 ADD
@@ -91,6 +87,7 @@ AS--UPDATE(GiaBan,GiaGiam)
 		SET GiaBan = @GiaBan, GiaGiam = @GiaGiam
 		WHERE MaSP = @MaSP
 	END
+GO 
 
 --TRIGGER
 /*a. Thành tiền CTHD = (Số lượng * (Giá bán - Giá giảm))
@@ -99,18 +96,19 @@ Bảng TAH:
 ____________|_______|_______|___________________________________
 CT_HoaDon	|	+	|	-	|+(SoLuong,GiaBan,GiaGiam,ThanhTien)
 */
-GO
 CREATE TRIGGER tg_CapNhatThanhTien ON CT_HoaDon FOR INSERT, UPDATE
 AS
 	IF (UPDATE(SoLuong) OR UPDATE(GiaBan) OR UPDATE(GiaGiam) OR UPDATE(ThanhTien))
 	BEGIN
 		UPDATE CT_HoaDon
-		SET ThanhTien = SoLuong * (GiaBan - GiaGiam)
-		WHERE EXISTS(SELECT * FROM INSERTED I
-				WHERE I.MaHD = CT_HoaDon.MaHD AND I.MaSP = CT_HoaDon.MaSP)
+			SET ThanhTien = SoLuong * (GiaBan - GiaGiam)
+			WHERE EXISTS(SELECT * FROM INSERTED I
+						 WHERE I.MaHD = CT_HoaDon.MaHD AND I.MaSP = CT_HoaDon.MaSP)
 	END
+GO
 
-/*b. Tổng tiền trong hóa đơn = tổng thanh toán từng chi tiết hóa đơn
+/*
+b. Tổng tiền trong hóa đơn = tổng thanh toán từng chi tiết hóa đơn
 Bảng TAH:
 			|	T	|	X	|		S
 ____________|_______|_______|________________________________________
@@ -137,9 +135,8 @@ CREATE TRIGGER tg_CTHoaDon_insert ON CT_HoaDon AFTER INSERT
 AS
 	EXEC sp_updateCT_HoaDon --UPDATE CT_HoaDon(GiaBan, GiaGiam)
 	UPDATE HoaDon
-	SET TongTien = TongTien + 
-			(SELECT ThanhTien FROM INSERTED WHERE MaHD = HoaDon.MaHD)
-	FROM HoaDon JOIN INSERTED ON HoaDon.MaHD = INSERTED.MaHD
+		SET TongTien = TongTien + (SELECT ThanhTien FROM INSERTED WHERE MaHD = HoaDon.MaHD)
+		FROM HoaDon JOIN INSERTED ON HoaDon.MaHD = INSERTED.MaHD
 ---
 GO
 CREATE TRIGGER tg_CTHoaDon_delete ON CT_HoaDon FOR DELETE
@@ -366,3 +363,5 @@ INSERT dbo.CT_HoaDon(MaHD, MaSP, SoLuong) VALUES (49, 18, 2)
 INSERT dbo.CT_HoaDon(MaHD, MaSP, SoLuong) VALUES (49, 24, 2)
 INSERT dbo.CT_HoaDon(MaHD, MaSP, SoLuong) VALUES (50, 19, 1)
 --SELECT * FROM CT_HoaDon
+
+SELECT * FROM HoaDon hd
