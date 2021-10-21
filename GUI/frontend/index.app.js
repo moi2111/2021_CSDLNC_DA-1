@@ -1,15 +1,48 @@
-$(function () {
+$(function() {
     var url = 'http://localhost:3000/hoadon';
+    $.ajax(url)
+        .done(function (data) {
+            var range = [];
+            for (var i = 1; i <= data.pageCount; i++) {
+                range.push(i);
+            }
+            var source = document.getElementById('pagination-template').innerHTML;
+            var template = Handlebars.compile(source);
+            var html = template(range);
+            $('#pagination-container').html(html);
+        }).fail(function (err) {
+            console.log(err);
+        })
+})
+
+$(function () {
+    var page = 1; //
+    var url = 'http://localhost:3000/hoadon/page/' + page;
+    renderPage(url);
+})
+
+function renderPage(url) {
     $.ajax(url)
         .done(function (data) {
             var source = document.getElementById('entry-template').innerHTML;
             var template = Handlebars.compile(source);
             var html = template(data.result);
-            // console.log(data)
             $('#invoices-list').html(html);
         }).fail(function (err) {
             console.log(err);
         })
+}
+
+// Khi click vào từng pagination
+$('#pagination-container').on('click', '.page-item', function () {
+    var button = $(this);
+    if ($('.page-item').hasClass('active')) {
+        $('.page-item').removeClass('active')
+    }
+    button.addClass('active');
+    page = button.children().data('id');
+    var url = 'http://localhost:3000/hoadon/page/' + page;
+    renderPage(url);
 })
 
 $('#invoices-list').on('click', '.delinvoice', function () {
@@ -31,7 +64,6 @@ $('#invoices-list').on('click', '.delinvoice', function () {
 })
 
 var focusedRow;
-
 $('#invoiceModal').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget);
     var id = button.data('id') 

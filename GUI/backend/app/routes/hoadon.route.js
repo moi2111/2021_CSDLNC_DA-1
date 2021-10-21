@@ -5,6 +5,10 @@ module.exports = (app) => {
     app.get('/hoadon',hoadonController.getList)
     
     app.get('/hoadon/:MaHD', hoadonController.getById)
+    
+    app.get('/hoadon/page/:page', hoadonController.getPage)
+    
+    app.get('/hoadon/thongke/:month', hoadonController.getListStatistic)
 
     app.post('/hoadon', hoadonController.addNew)
     

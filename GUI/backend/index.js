@@ -10,13 +10,6 @@ app.use(cors())
 app.use(express.json())
 app.use(morgan('dev'))
 
-
-app.get('/', (req, res) => {
-  res.json({
-    msg: 'root'
-  });
-})
-
 require('./app/routes/hoadon.route.js')(app)
 require('./app/routes/ct_hoadon.route.js')(app)
 
