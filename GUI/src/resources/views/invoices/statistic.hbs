@@ -1,0 +1,42 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card shadow mt-5">
+            <h5 class="card-header">
+                Thống kê hóa đơn theo tháng
+                    <nav aria-label="Page statistic">
+                        <ul class="pagination statistic mt-2">
+                            {{#each month}}
+                            <li class="page-item"><a class="page-link" href="?month={{this}}">{{this}}</a></li>
+                            {{/each}}
+                        </ul>
+                    </nav>  
+            </h5>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                        <th class="text-center" scope="col">MaHD</th>
+                        <th class="text-center" scope="col">MaKH</th>
+                        <th scope="col">Ngày lập</th>
+                        <th scope="col">Tổng tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody id="invoices-list">
+                        {{#each invoices}}
+                        <tr>
+                            <td class="text-center">{{MaHD}}</td>
+                            <td class="text-center">{{MaKH}}</td>
+                            <td>{{NgayLap}}</td>
+                            <td>{{TongTien}} VNĐ</td>
+                        </tr>
+                        {{else}}
+                            <td class="text-center" colspan="4">Trong tháng này không có hóa đơn nào. <a href="/invoices/create">Bấm vào đây để thêm hóa đơn.</a></td>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer text-muted">
+            </div>
+        </div>
+    </div>
+</div>
