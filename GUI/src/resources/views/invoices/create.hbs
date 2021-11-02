@@ -1,0 +1,16 @@
+<div class="mt-4">
+    <h3>Thêm hóa đơn</h3>
+
+    <form method="POST" action="/invoices/create">
+        <div class="form-group">
+            <label for="MaKH">Mã khách hàng</label>
+            <input type="text" class="form-control" id="MaKH" name="MaKH" placeholder="Nhập vào mã khách hàng. VD: 1">
+        </div>
+        <div class="form-group">
+            <label for="NgayLap">Ngày lập</label>
+            <input type="text" class="form-control" id="NgayLap" name="NgayLap" placeholder="mm/dd/yyyy">
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Thêm</button>
+    </form>
+</div>

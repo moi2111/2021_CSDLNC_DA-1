@@ -1,0 +1,59 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card shadow mt-5">
+            <h5 class="card-header">
+                <i class="fas fa-file-invoice"></i>
+                DANH SÁCH HÓA ĐƠN
+            </h5>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                        <th class="text-center" scope="col">MaHD</th>
+                        <th class="text-center" scope="col">MaKH</th>
+                        <th scope="col">Ngày lập</th>
+                        <th scope="col">Tổng tiền</th>
+                        <th scope="col" class="text-right">
+    
+                        </th>
+                        </tr>
+                    </thead>
+                    <tbody id="invoices-list">
+                        {{#each invoices}}
+                        <tr>
+                            <td class="text-center" scope="row">{{MaHD}}</td>
+                            <td class="text-center" scope="row">{{MaKH}}</td>
+                            <td>{{NgayLap}}</td>
+                            <td>{{TongTien}} VNĐ</td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer text-muted">
+                <ul class="pagination mt-2">
+                    <li class="page-item">
+                        <a class="page-link" href="?page=1" aria-label="Head">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    {{#if previous}}
+                        <li class="page-item"><a class="page-link" href="?page={{previous.page}}">Previous</a></li>
+                    {{else}}
+                        <li class="page-item disabled"><a class="page-link">Previous</a></li>
+                    {{/if}}
+                    {{#if next}}
+                        <li class="page-item"><a class="page-link" href="?page={{next.page}}">Next</a></li>
+                    {{else}}
+                        <li class="page-item disabled"><a class="page-link">Next</a></li>
+                    {{/if}}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{pagination}}" aria-label="Tail">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
