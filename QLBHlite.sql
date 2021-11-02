@@ -138,7 +138,7 @@ Thực hiện:
 CREATE TRIGGER tg_CtHoaDon_Insert_Update ON CT_HoaDon
 	AFTER INSERT, UPDATE
 AS
-	-- Nếu là hành động insert (chỉ có insert thì bảng deleded mới rỗng)
+	-- Xét hành động INSERT (chỉ có insert thì bảng deleded mới rỗng)
 	IF NOT EXISTS (SELECT * FROM DELETED) 
 	BEGIN  
 		-- Update lại giaban từ gia(sanpham)
@@ -160,7 +160,7 @@ AS
 			WHERE HoaDon.mahd IN (SELECT i.mahd FROM INSERTED i)
     END
 	
-	-- Nếu là hành động update
+	-- Xét hành động UPDATE
     ELSE
 	BEGIN
 		-- Nếu có thay đổi các thông tin liên quan đến thanhtien thì tính lại số liệu 
