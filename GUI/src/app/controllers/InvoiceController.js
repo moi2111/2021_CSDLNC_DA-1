@@ -75,7 +75,23 @@ class InvoiceController {
             })
             .catch(next)
     }
-    
+
+    // [GET] /invoices/details
+    details(req, res, next) {
+        res.render('invoices/details', {
+            MaHD: req.query.MaHD,
+        })
+    }
+
+    // [POST] /invoices/details
+    addDetails(req, res, next) {
+        let detail = {...req.body}
+        Invoice.addDetail(detail)
+            .then(() => {
+                res.redirect('/invoices?page=1')
+            })
+            .catch(next)
+    }
 }
 
 module.exports = new InvoiceController()

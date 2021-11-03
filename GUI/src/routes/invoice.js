@@ -9,6 +9,10 @@ router.post('/create', invoiceController.add)
 
 router.get('/statistic',invoiceController.statistic)
 
+router.get('/details',invoiceController.details)
+
+router.post('/details',invoiceController.addDetails)
+
 router.get('/', invoiceController.getList)
 
 

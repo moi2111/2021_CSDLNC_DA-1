@@ -1,0 +1,24 @@
+<div class="mt-4">
+    <h3>Thêm chi tiết hóa đơn</h3>
+
+    <form method="POST" action="/invoices/details">
+        <div class="form-group">
+            <label for="MaHD">Mã hóa đơn</label>
+            <input type="text" class="form-control" id="MaHD" name="MaHD" readonly value="{{MaHD}}">
+        </div>
+        <div class="form-group">
+            <label for="MaSP">Mã sản phẩm</label>
+            <input type="text" class="form-control" id="MaSP" name="MaSP" required placeholder="Nhập vào mã sản phẩm. VD: 1">
+        </div>
+        <div class="form-group">
+            <label for="SoLuong">Số lượng</label>
+            <input type="text" class="form-control" id="SoLuong" name="SoLuong" required>
+        </div>
+        <div class="form-group">
+            <label for="GiaGiam">Giá Giảm</label>
+            <input type="text" class="form-control" id="GiaGiam" name="GiaGiam" required placeholder="10% => 0.1">
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Thêm</button>
+    </form>
+</div>

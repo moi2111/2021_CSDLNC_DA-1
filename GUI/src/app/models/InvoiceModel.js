@@ -39,4 +39,19 @@ module.exports = function () {
             console.log(err);
         }
     }
+
+    this.addDetail = async (detail) => {
+        try {
+            let pool = await sql.connect(config);
+            await pool.request()
+                .input('MaHD', sql.Int, detail.MaHD)
+                .input('MaSP', sql.Int, detail.MaSP)
+                .input('SoLuong', sql.Int, detail.SoLuong)
+                .input('GiaGiam', sql.Int, detail.GiaGiam)
+                .query("INSERT INTO CT_HoaDon (MaHD, MaSP, SoLuong, GiaGiam) VALUES(@MaHD, @MaSP, @SoLuong, @GiaGiam)")
+        }
+        catch (err) {
+            console.log(err);
+        }
+    }
 }
