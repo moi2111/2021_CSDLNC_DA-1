@@ -38,12 +38,6 @@ class InvoiceController {
                     next: results.next,
                     previous: results.previous,
                 })
-                // res.json({
-                //     pagination: results.pagination,
-                //     next: results.next,
-                //     previous: results.previous,
-                //     invoices: results.invoices,
-                // })
             })
             .catch(next)
     }

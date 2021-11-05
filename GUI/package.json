@@ -5,22 +5,28 @@
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon src/index.js",
-    "watch": "node-sass --watch src/resources/scss/ --output src/public/css/"
+    "start": "node src/index.js",
+    "watch": "node-sass --watch src/resources/scss/ --output src/public/css/",
+    "client": "npm run start --prefix client",
+    "server": "nodemon",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "proxy": "http://localhost:4000",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "concurrently": "^6.3.0",
     "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-handlebars": "^5.3.4",
     "method-override": "^3.0.0",
+    "morgan": "^1.10.0",
     "mssql": "^7.2.1"
   },
   "devDependencies": {
-    "morgan": "^1.10.0",
     "node-sass": "^6.0.1",
     "nodemon": "^2.0.14"
   }

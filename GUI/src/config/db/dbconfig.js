@@ -1,10 +1,23 @@
-// Các thông tin kết nối CSDL
+const dotenv = require('dotenv');
+
+dotenv.config();
+
+//Các thông tin kết nối CSDL
 const config = {
-    server: 'localhost', // You can use 'localhost\\instance' to connect to named instance
-    user: 'root',
-    password: 'root',
-    database: 'QLBH',
-    trustServerCertificate: true,
+    user: process.env.DB_USER,
+    password: process.env.DB_PWD,
+    database: process.env.DB_NAME,
+    server: 'localhost',
+    pool: {
+        max: 10,
+        min: 0,
+        idleTimeoutMillis: 30000
+    },
+    options: {
+        encrypt: true, // for azure
+        trustServerCertificate: true // change to true for local dev / self-signed certs
+    }
 }
 
 module.exports = config
+
